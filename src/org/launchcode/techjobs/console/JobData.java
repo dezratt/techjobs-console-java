@@ -128,12 +128,15 @@ public class JobData {
 
     public static ArrayList<HashMap<String, String>> findByValue(String searchTerm) {
         loadData();
+
         searchTerm = searchTerm.toLowerCase();
+
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
-        for (int i = 0; i < allJobs.size(); i++) {
+
+        for  (int i = 0; i < allJobs.size(); i++) {
             HashMap<String, String> job = allJobs.get(i);
             for (Map.Entry<String, String> entry : job.entrySet()) {
-                if (entry.getValue().toLowerCase().contains(searchTerm)) {
+                if (entry.getValue().toLowerCase().contains(searchTerm) && !jobs.contains(job)) {
                     jobs.add(job);
                 }
             }
